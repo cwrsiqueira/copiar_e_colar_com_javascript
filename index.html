@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copiar e colar</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            width: fit-content;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="texto-copiar" id="texto-copiar" cols="30" rows="10"></textarea>
+    <button onclick="copiarTexto()">Copiar</button>
+    <textarea name="texto-colar" id="texto-colar" cols="30" rows="10"></textarea>
+    <button onclick="colarTexto()">Colar</button>
+
+    <script>
+        function copiarTexto() {
+            const texto = document.querySelector('#texto-copiar').value;
+            navigator.clipboard.writeText(texto)
+                .then(() => {
+                    alert('Texto copiado!');
+                })
+                .catch(err => {
+                    console.error('Erro ao copiar o texto: ', err);
+                    alert('Falha ao copiar o texto!');
+                })
+        }
+
+        function colarTexto() {
+            navigator.clipboard.writeText()
+                .then(texto => {
+                    document.querySelector('#texto-colar').value = texto;
+                })
+                .catch(err => {
+                    console.error('Erro ao colar o texto: ', err);
+                    alert('Falha ao colar o texto!');
+                })
+        }
+    </script>
+</body>
+
+</html>

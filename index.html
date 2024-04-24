@@ -40,7 +40,7 @@
         }
 
         function colarTexto() {
-            navigator.clipboard.writeText()
+            navigator.clipboard.readText()
                 .then(texto => {
                     document.querySelector('#texto-colar').value = texto;
                 })
